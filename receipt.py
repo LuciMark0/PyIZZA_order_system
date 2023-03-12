@@ -2,6 +2,7 @@ from datetime import datetime
 from PyQt5 import QtCore, QtGui, QtWidgets
 from pizza_full_database import Customer_Database,receipt_pizza_addmade_database
 
+
 customer_db = Customer_Database()
 _translate = QtCore.QCoreApplication.translate
 
