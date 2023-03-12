@@ -111,7 +111,7 @@ class Ui_forgetmypassword(object):
                     if re.findall(r""+check,password):
                         continue
                     else:
-                        return "Invalid Password!"
+                        return "Weak Password!"
                 return True
             else:
                 return "Passwords are not equal"
