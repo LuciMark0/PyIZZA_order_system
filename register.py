@@ -111,7 +111,7 @@ class Ui_register_window(object):
         errors=""
         while True:
             name = self.input_name_line.text()
-            if re.search(r"^[a-zA-Z,ş,ö,ç,ı,ğ,\s]+$",name):
+            if re.search(r"^[a-zA-Z,ş,ö,ç,ı,ğ,ü,Ş,Ö,Ç,İ,Ğ,Ü,\s]+$",name):
                 pass
             else:
                 errors+= "Invalid Name!\n"
@@ -141,7 +141,7 @@ class Ui_register_window(object):
                 if re.findall(r""+check,password):
                     continue
                 else:
-                    errors+= "Invalid password!\n"
+                    errors+= "Weak password!\n"
                     break
             if(errors==""):
                 return True
