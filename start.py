@@ -2,6 +2,18 @@ from PyQt5 import QtCore, QtWidgets
 from PyQt5.QtWidgets import QMessageBox, QDesktopWidget
 from pizza_full_database import Customer_Database, incoming_pizza_order_database
 
+
+def main():
+    import sys
+    set_default_menu()
+    app = QtWidgets.QApplication(sys.argv)
+    MainWindow = QtWidgets.QMainWindow()
+    ui = Ui_startWindow()
+    ui.setupUi(MainWindow)
+    MainWindow.show()
+    sys.exit(app.exec_())
+
+
 def set_default_menu():
     from pizza_full_database import pizza_Database,addition_Metarial 
 
@@ -205,11 +217,4 @@ class Ui_startWindow(object):
 
 
 if __name__ == "__main__":
-    import sys
-    set_default_menu()
-    app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_startWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
-    sys.exit(app.exec_())
+    main()
