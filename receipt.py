@@ -106,7 +106,6 @@ f"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin
 
 
 
-
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
