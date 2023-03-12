@@ -147,6 +147,7 @@ class Ui_register_window(object):
                 return True
             else:
                 return errors
+            
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
