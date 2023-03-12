@@ -1,7 +1,7 @@
 # PyIZZA_order_system
 
 ## Description
-PyIZZA_order_system is a Pizza order system with a PyQt5 user interface. It was developed as a final project for the Global_AI_Hub_Akbank_Python_Bootcamp.
+PyIZZA_order_system is a pizza ordering system designed with a user-friendly PyQt5 interface. The project was developed by **Göktuğ Kaan Koz** and **Hasan Özcan** as their final project for the Global AI Hub Akbank Python Bootcamp. This system allows customers to easily select their preferred pizza and additional ingredients, view their order in a cart, input their credit card details, and receive a receipt. The system is also equipped with an admin panel that allows menu modifications, such as the addition of new pizzas or ingredients.
 
 ## Folder_Contents
 The project folder contains the following files:
