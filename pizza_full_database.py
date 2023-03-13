@@ -240,7 +240,8 @@ class incoming_pizza_order_database:
     def all_order_database_delete(self):
         self.cur.execute(deleteallcart)
         self.con.commit()
-
+        
+#-------------------------------------------------------------------end
 
 createreceiptpizzatable="""CREATE TABLE IF NOT EXISTS receipt_database 
 (id INTEGER PRIMARY KEY,personal_id  TEXT KEY,  order_pizza_pizza_name_add_made TEXT NOT NULL,order_details_pizza_name TEXT NOT NULL, order_details_pizza_add_name TEXT NOT NULL, order_date TEXT NOT NULL,total TEXT NOT NULL);"""
@@ -248,6 +249,12 @@ createreceiptpizzatable="""CREATE TABLE IF NOT EXISTS receipt_database
 insertreceiptdata = "INSERT OR IGNORE INTO receipt_Database (personal_id,order_pizza_pizza_name_add_made,order_details_pizza_name,order_details_pizza_add_name,order_date,total) VALUES (?, ?, ?, ? ,? ,?);"
 
 Allreceiptpizza = "SELECT order_pizza_pizza_name_add_made FROM receipt_database;"
+
+Allreceiptpizzaname = "SELECT order_details_pizza_name FROM receipt_database;"
+
+Allreceiptpizzaaddmade = "SELECT order_details_pizza_add_name FROM receipt_database;"
+
+Allreceiptpizzatotal = "SELECT total FROM receipt_database;"
 
 deletereceiptpizza= "DELETE FROM receipt_database WHERE id= ? ;"
 
@@ -263,14 +270,22 @@ class receipt_pizza_addmade_database:
         self.cur.execute(insertreceiptdata,(personal_id,order_pizza_pizza_name_add_made,order_details_pizza_name,order_details_pizza_add_name,order_date,total))
         self.con.commit()
     
+    def all_receipt_pizza_name(self):
+        return self.cur.execute(Allreceiptpizzaname).fetchall()
+    
+    def all_receipt_pizza_name(self):
+        return self.cur.execute(Allreceiptpizzaname).fetchall()
+    
+    def all_receipt_pizza_addmade(self):
+        return self.cur.execute(Allreceiptpizzaaddmade).fetchall()
+        
+    def all_receipt_pizza_total(self):
+        return self.cur.execute(Allreceiptpizzatotal).fetchall()
+        
+
     def all_receipt_pizza(self):
         return self.cur.execute(Allreceiptpizza).fetchall()
     
     def del_pizza_table(self,id):
         self.cur.execute(deletereceiptpizza,(id,))
         self.con.commit()
-
-
-
-
-
