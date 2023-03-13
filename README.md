@@ -14,6 +14,7 @@ The project folder contains the following files:
 - **card_purchase.py**: This file contains the credit card input screen where users can enter their payment details.
 - **receipt.py**: This file contains the receipt screen which displays the order details.
 - **pizza_full_database.py**: This file contains all the databases, including customer information, pizzas, additional ingredients, credit card information, etc.
+- **data_analyst.py**: This file is responsible for data analysis and visualization.
 - **admin.py**: This file houses the admin control panel, where administrators can modify the menu and perform sales analysis using visualized data.
 
 ## Libraries Used
