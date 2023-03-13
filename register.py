@@ -141,7 +141,8 @@ class Ui_register_window(object):
                 if re.findall(r""+check,password):
                     continue
                 else:
-                    errors+= "Weak password!\n"
+                    values = {"\d":"Numbers","[A-Z]":"Upper cases","[a-z]":"Lower cases","\W":"special characters"}
+                    errors+= f"Weak password, must contain {values[check]}!"
                     break
             if(errors==""):
                 return True
