@@ -29,7 +29,7 @@ The following libraries were used in this project:
 - ```sys```: Used to safely exit the application.
 
 ## How To Use
-To use the PyIZZA_order_system, make sure that the file names are exactly the same as listed above. If you want to change the file names, make sure to update the references in the code. To start the application, run the start.py file and use the buttons on the user interface to navigate through the various screens. To add new pizzas or additional ingredients, use the admin.py file and follow the instructions on the command panel.
+To use the PyIZZA_order_system, ensure that the file names are the same as listed above. If you change the file names, update the references in the code. To begin the application, run the **start.py** file and use the user interface buttons to navigate through the screens. to modify the menu and perform sales analysis, use the **admin.py** file and follow the instructions on the command panel.
 
 ## Contribution
 If you find any issues or want to contribute to this project, feel free to create a pull request or submit an issue.
