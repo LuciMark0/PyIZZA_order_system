@@ -1,7 +1,7 @@
 # PyIZZA_order_system
 
 ## Description
-PyIZZA_order_system is a pizza ordering system designed with a user-friendly PyQt5 interface. The project was developed by **Göktuğ Kaan Koz** and **[Hasan Özcan](https://github.com/Hasan26ozcan)** as their final project for the Global AI Hub Akbank Python Bootcamp. This system allows customers to easily select their preferred pizza and additional ingredients, view their order in a cart, input their credit card details, and receive a receipt. The system is also equipped with an admin panel that allows menu modifications, such as the addition of new pizzas or ingredients.
+PyIZZA_order_system is a pizza ordering system designed with a user-friendly PyQt5 interface. The project was developed by **Göktuğ Kaan Koz** and **[Hasan Özcan](https://github.com/Hasan26ozcan)** as their final project for the Global AI Hub Akbank Python Bootcamp. This system allows customers to easily select their preferred pizza and additional ingredients, view their order in a cart, input their credit card details, and receive a receipt. The system also features an admin panel that enables menu modification and analysis of sales data through visualized data.
 
 ## Folder_Contents
 The project folder contains the following files:
@@ -14,17 +14,19 @@ The project folder contains the following files:
 - **card_purchase.py**: This file contains the credit card input screen where users can enter their payment details.
 - **receipt.py**: This file contains the receipt screen which displays the order details.
 - **pizza_full_database.py**: This file contains all the databases, including customer information, pizzas, additional ingredients, credit card information, etc.
-- **admin.py**: This file contains the admin command panel where administrators can make changes to the menu.
+- **admin.py**: This file houses the admin control panel, where administrators can modify the menu and perform sales analysis using visualized data.
 
 ## Libraries Used
 The following libraries were used in this project:
 
 - ```PyQt5```: Used to create the graphical user interface.
 - ```sqlite3```  Used to manage the databases.
-- ```validator_collection```: Used to validate email addresses.
+- ```pandas```: Used to manipulate and analyze data.
+- ```matplotlib```: Used to visualize and plot data.
 - ```re```:  Used to validate user inputs.
-- ```sys```: Used to safely exit the application.
+- ```validator_collection```: Used to validate email addresses.
 - ```datetime```: Used to track the purchase time.
+- ```sys```: Used to safely exit the application.
 
 ## How To Use
 To use the PyIZZA_order_system, make sure that the file names are exactly the same as listed above. If you want to change the file names, make sure to update the references in the code. To start the application, run the start.py file and use the buttons on the user interface to navigate through the various screens. To add new pizzas or additional ingredients, use the admin.py file and follow the instructions on the command panel.
