@@ -1,159 +1,175 @@
 import re
-from PyQt5.QtWidgets import QMessageBox, QDesktopWidget
-from PyQt5 import QtCore, QtWidgets
+from PyQt5.QtWidgets import (QAction, QApplication, QMainWindow, QMessageBox,
+                             QScrollArea, QDesktopWidget, QWidget, QGridLayout,
+                             QLabel, QLineEdit, QPushButton, QSpacerItem, QSizePolicy)
+from PyQt5.QtCore import QCoreApplication, QRect
 from validator_collection import validators
 from pizza_full_database import Customer_Database
 
-class Ui_register_window(object):
-    def setupUi(self, MainWindow):
-        self.database_addiation=Customer_Database()
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(566, 301)
-        qr = MainWindow.frameGeometry()
+class UiRegisterWindow(object):
+    def __init__(self):
+        self.database_addition = Customer_Database()
+
+    def setup_ui(self, main_window):
+        main_window.setObjectName("MainWindow")
+        main_window.resize(566, 301)
+        qr = main_window.frameGeometry()
         cp = QDesktopWidget().availableGeometry().center()
         qr.moveCenter(cp)
-        MainWindow.move(qr.topLeft())
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
-        self.centralwidget.setObjectName("centralwidget")
-        self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
-        self.gridLayout.setObjectName("gridLayout")
-        self.scrollArea_2 = QtWidgets.QScrollArea(self.centralwidget)
-        self.scrollArea_2.setWidgetResizable(True)
-        self.scrollArea_2.setObjectName("scrollArea_2")
-        self.scrollAreaWidgetContents_2 = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_2.setGeometry(QtCore.QRect(0, 0, 546, 240))
-        self.scrollAreaWidgetContents_2.setObjectName("scrollAreaWidgetContents_2")
-        self.gridLayout_2 = QtWidgets.QGridLayout(self.scrollAreaWidgetContents_2)
-        self.gridLayout_2.setObjectName("gridLayout_2")
-        self.password_label = QtWidgets.QLabel(self.scrollAreaWidgetContents_2)
-        self.password_label.setObjectName("password_label")
-        self.gridLayout_2.addWidget(self.password_label, 3, 0, 1, 1)
-        self.input_email_line = QtWidgets.QLineEdit(self.scrollAreaWidgetContents_2)
-        self.input_email_line.setObjectName("input_email_line")
-        self.gridLayout_2.addWidget(self.input_email_line, 4, 1, 1, 1)
-        self.input_password_line = QtWidgets.QLineEdit(self.scrollAreaWidgetContents_2)
-        self.input_password_line.setEchoMode(QtWidgets.QLineEdit.Password)
-        self.input_password_line.setObjectName("input_password_line")
-        self.gridLayout_2.addWidget(self.input_password_line, 3, 1, 1, 1)
-        self.name_label = QtWidgets.QLabel(self.scrollAreaWidgetContents_2)
-        self.name_label.setObjectName("name_label")
-        self.gridLayout_2.addWidget(self.name_label, 2, 0, 1, 1)
-        self.input_personal_number_line = QtWidgets.QLineEdit(self.scrollAreaWidgetContents_2)
-        self.input_personal_number_line.setObjectName("input_personal_number_line")
-        self.gridLayout_2.addWidget(self.input_personal_number_line, 1, 1, 1, 1)
-        self.email_password = QtWidgets.QLabel(self.scrollAreaWidgetContents_2)
-        self.email_password.setObjectName("email_password")
-        self.gridLayout_2.addWidget(self.email_password, 4, 0, 1, 1)
-        self.personalnumber_label = QtWidgets.QLabel(self.scrollAreaWidgetContents_2)
-        self.personalnumber_label.setObjectName("personalnumber_label")
-        self.gridLayout_2.addWidget(self.personalnumber_label, 1, 0, 1, 1)
-        self.input_name_line = QtWidgets.QLineEdit(self.scrollAreaWidgetContents_2)
+        main_window.move(qr.topLeft())
+
+        central_widget = QWidget(main_window)
+        central_widget.setObjectName("centralwidget")
+        main_layout = QGridLayout(central_widget)
+        main_layout.setObjectName("gridLayout")
+
+        scroll_area = self.create_scroll_area(central_widget)
+        scroll_area_widget = QWidget()
+        scroll_area.setWidget(scroll_area_widget)
+        scroll_layout = QGridLayout(scroll_area_widget)
+        scroll_layout.setObjectName("gridLayout_2")
+
+        personal_num_label = QLabel(scroll_area_widget)
+        personal_num_label.setObjectName("personalnumber_label")
+        scroll_layout.addWidget(personal_num_label, 1, 0, 1, 1)
+
+        self.input_personal_num_line = QLineEdit(scroll_area_widget)
+        self.input_personal_num_line.setObjectName("input_personal_number_line")
+        scroll_layout.addWidget(self.input_personal_num_line, 1, 1, 1, 1)
+
+        name_label = QLabel(scroll_area_widget)
+        name_label.setObjectName("name_label")
+        scroll_layout.addWidget(name_label, 2, 0, 1, 1)
+
+        self.input_name_line = QLineEdit(scroll_area_widget)
         self.input_name_line.setObjectName("input_name_line")
-        self.gridLayout_2.addWidget(self.input_name_line, 2, 1, 1, 1)
-        spacerItem = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.gridLayout_2.addItem(spacerItem, 5, 1, 1, 1)
-        spacerItem1 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.gridLayout_2.addItem(spacerItem1, 0, 1, 1, 1)
-        self.new_register_button = QtWidgets.QPushButton(self.scrollAreaWidgetContents_2)
-        self.new_register_button.setObjectName("new_register_button")
-        self.gridLayout_2.addWidget(self.new_register_button, 6, 1, 1, 1)
-        self.scrollArea_2.setWidget(self.scrollAreaWidgetContents_2)
-        self.gridLayout.addWidget(self.scrollArea_2, 0, 0, 1, 1)
-        MainWindow.setCentralWidget(self.centralwidget)
-        self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 566, 21))
-        self.menubar.setObjectName("menubar")
-        MainWindow.setMenuBar(self.menubar)
-        self.statusbar = QtWidgets.QStatusBar(MainWindow)
+        scroll_layout.addWidget(self.input_name_line, 2, 1, 1, 1)
+
+        password_label = QLabel(scroll_area_widget)
+        password_label.setObjectName("password_label")
+        scroll_layout.addWidget(password_label, 3, 0, 1, 1)
+
+        self.input_password_line = QLineEdit(scroll_area_widget)
+        self.input_password_line.setEchoMode(QLineEdit.Password)
+        self.input_password_line.setObjectName("input_password_line")
+        scroll_layout.addWidget(self.input_password_line, 3, 1, 1, 1)
+
+        email_label = QLabel(scroll_area_widget)
+        email_label.setObjectName("email_label")
+        scroll_layout.addWidget(email_label, 4, 0, 1, 1)
+
+        self.input_email_line = QLineEdit(scroll_area_widget)
+        self.input_email_line.setObjectName("input_email_line")
+        scroll_layout.addWidget(self.input_email_line, 4, 1, 1, 1)
+
+        spacer_item1 = self.create_spacer_item()
+        scroll_layout.addItem(spacer_item1, 0, 1, 1, 1)
+
+        spacer_item2 = self.create_spacer_item()
+        scroll_layout.addItem(spacer_item2, 5, 1, 1, 1)
+
+        new_register_button = QPushButton(scroll_area_widget)
+        new_register_button.setObjectName("new_register_button")
+        new_register_button.clicked.connect(lambda: self.add_database_control(main_window))
+        scroll_layout.addWidget(new_register_button, 6, 1, 1, 1)
+
+        main_layout.addWidget(scroll_area, 0, 0, 1, 1)
+        main_window.setCentralWidget(central_widget)
+
+        menubar = main_window.menuBar()
+        menubar.setGeometry(QRect(0, 0, 566, 21))
+        menubar.setObjectName("menubar")
+        main_window.setMenuBar(menubar)
+
+        self.statusbar = QMainWindow.statusBar(main_window)
         self.statusbar.setObjectName("statusbar")
-        MainWindow.setStatusBar(self.statusbar)
+        main_window.setStatusBar(self.statusbar)
 
+        self.retranslate_ui(main_window)
+        QCoreApplication.instance().setStyleSheet("QPushButton {background-color: #008CBA; color: white;}")
 
-        self.new_register_button.clicked.connect(lambda : self.add_data_base_control(MainWindow))
-        self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+    def create_scroll_area(self, widget):
+        scroll_area = QScrollArea(widget)
+        scroll_area.setWidgetResizable(True)
+        scroll_area.setObjectName("scrollArea")
+        return scroll_area
 
+    def create_spacer_item(self):
+        return QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
-    def retranslateUi(self, MainWindow):
-        _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "Register Menu"))
-        self.password_label.setText(_translate("MainWindow", "Password : "))
-        self.name_label.setText(_translate("MainWindow", "Name : "))
-        self.email_password.setText(_translate("MainWindow", "E_mail : "))
-        self.personalnumber_label.setText(_translate("MainWindow", "Personal id : "))
-        self.new_register_button.setText(_translate("MainWindow", "Sign-up"))
-    def add_data_base_control(self,Mainwindow):
-        self.a_signup=self.sign_up()
-        if(type(self.a_signup)==bool):
-            self.message_box_succesfull()
-            self.database_addiation.insert_customer(self.input_personal_number_line.text(),self.input_name_line.text(),self.input_password_line.text(),self.input_email_line.text())
+    def retranslate_ui(self, main_window):
+        translation = QCoreApplication.translate
+        main_window.setWindowTitle(translation("MainWindow", "Register Menu"))
+        personal_number_label = main_window.findChild(QLabel, "personalnumber_label")
+        personal_number_label.setText(translation("MainWindow", "Personal ID: "))
+        name_label = main_window.findChild(QLabel, "name_label")
+        name_label.setText(translation("MainWindow", "Name: "))
+        password_label = main_window.findChild(QLabel, "password_label")
+        password_label.setText(translation("MainWindow", "Password: "))
+        email_label = main_window.findChild(QLabel, "email_label")
+        email_label.setText(translation("MainWindow", "E-mail: "))
+        new_register_button = main_window.findChild(QPushButton, "new_register_button")
+        new_register_button.setText(translation("MainWindow", "Sign-up"))
+
+    def add_database_control(self, main_window):
+        try:
+            self.signup()
+
+            self.database_addition.insert_customer(self.input_personal_num_line.text(),
+                                                    self.input_name_line.text(),
+                                                    self.input_password_line.text(),
+                                                    self.input_email_line.text())
+            self.message_box_successful()
+
             from start import Ui_startWindow
-            self.window=QtWidgets.QMainWindow()
-            self.ui=Ui_startWindow()
-            self.ui.setupUi(self.window)
-            Mainwindow.hide()
-            self.window.show()
-        else:
-            self.message_box_wrong_password(self.a_signup)
+            start_window = QMainWindow()
+            start_ui = Ui_startWindow()
+            start_ui.setupUi(start_window)
 
-    def message_box_wrong_password(self,error):
-        dialog=QMessageBox()
-        dialog.setText(error)
-        dialog.setWindowTitle("Invalid Input")
-        dialog.exec_()
-    def message_box_succesfull(self):
-        dialog=QMessageBox()
-        dialog.setText("your register is succesfull")
-        dialog.setWindowTitle("succesfull")
+            main_window.hide()
+            start_window.show()
+
+        except Exception as e:
+            self.message_box_error(str(e))
+
+    def message_box_error(self, error_message):
+        dialog = QMessageBox()
+        dialog.setIcon(QMessageBox.Critical)
+        dialog.setText(error_message)
+        dialog.setWindowTitle("Error")
         dialog.exec_()
 
-    def sign_up(self):
-        errors=""
-        while True:
-            name = self.input_name_line.text()
-            if re.search(r"^[a-zA-Z,ş,ö,ç,ı,ğ,ü,Ş,Ö,Ç,İ,Ğ,Ü,\s]+$",name):
-                pass
-            else:
-                errors+= "Invalid Name!\n"
-                
-            personal_id = self.input_personal_number_line.text()
+    def message_box_successful(self):
+        dialog = QMessageBox()
+        dialog.setIcon(QMessageBox.Information)
+        dialog.setText("Your registration is successful.")
+        dialog.setWindowTitle("Success")
+        dialog.exec_()
 
-            if re.search(r"^\d{11}$",personal_id):
-                if (self.database_addiation.personal_number_checked(personal_id)==None):
-                    pass
-                else:
-                    errors+="Invalid Personal ID already exist!\n"
-            else:
-                errors+="Invalid Personal ID!\n"
+    def signup(self):
+        name = self.input_name_line.text()
+        if not re.match("^[A-Za-zşöçığüŞÖÇİĞÜ\s]+$", name):
+            raise ValueError("Invalid name.")
 
-            email = self.input_email_line.text()
-            try:
-                email_address = validators.email(email, allow_empty = True)
-                if not email_address == None:
-                    pass
-                else:
-                    errors+= "Invalid e-mail\n"
-            except:
-                errors+= "Invalid e-mail\n"
-            
-            password = self.input_password_line.text()
-            for check in ["\d", "[A-Z]", "[a-z]", "\W"]:
-                if re.findall(r""+check,password):
-                    continue
-                else:
-                    values = {"\d":"Numbers","[A-Z]":"Upper cases","[a-z]":"Lower cases","\W":"special characters"}
-                    errors+= f"Weak password, must contain {values[check]}!"
-                    break
-            if(errors==""):
-                return True
-            else:
-                return errors
-            
+        personal_id = self.input_personal_num_line.text()
+        if not re.match("^\d{11}$", personal_id):
+            raise ValueError("Invalid personal ID.")
+        if self.database_addition.personal_number_checked(personal_id) is not None:
+            raise ValueError("Personal ID already exists.")
+
+        email = self.input_email_line.text()
+        if email.strip() != "" and not validators.email(email):
+            raise ValueError("Invalid email.")
+
+        password = self.input_password_line.text()
+        if not re.match("^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$", password):
+            raise ValueError("Weak password. Password must contain at least 8 characters with 1 uppercase letter, 1 lowercase letter, 1 number and 1 special character.")
+
 if __name__ == "__main__":
     import sys
-    app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_register_window()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
+    app = QApplication(sys.argv)
+    main_window = QMainWindow()
+    ui = UiRegisterWindow()
+    ui.setup_ui(main_window)
+    main_window.show()
     sys.exit(app.exec_())
