@@ -199,7 +199,7 @@ class Ui_startWindow(object):
     def new_register_open_window(self, main_window):
         self.register_window = QtWidgets.QMainWindow()
         self.register_ui = UiRegisterWindow()
-        self.register_ui.setupUi(self.register_window)
+        self.register_ui.setup_ui(self.register_window)
         main_window.hide()
         self.register_window.show()
 
