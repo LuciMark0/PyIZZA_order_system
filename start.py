@@ -8,7 +8,7 @@ from pizza_full_database import (
     addition_Metarial
 )
 
-from register import Ui_register_window
+from register import UiRegisterWindow
 from forgot_password import Ui_forgetmypassword
 from pizza_order import Ui_siparis_window
 
@@ -198,7 +198,7 @@ class Ui_startWindow(object):
 
     def new_register_open_window(self, main_window):
         self.register_window = QtWidgets.QMainWindow()
-        self.register_ui = Ui_register_window()
+        self.register_ui = UiRegisterWindow()
         self.register_ui.setupUi(self.register_window)
         main_window.hide()
         self.register_window.show()
